@@ -1,0 +1,30 @@
+/**
+* Colors
+  - BG: #222831
+  - BG_ALT: #393E46
+  - Text: #EEEEEE
+  - Other: #FFD369
+*/
+
+:root {
+  font-family: 'Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #222831;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
