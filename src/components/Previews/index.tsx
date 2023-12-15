@@ -10,7 +10,10 @@ const Preview: React.FC = () => {
   return (
     <div className="preview">
       <div className="content">
-        <MarkdowPreview source={code} style={{ padding: "20px 20px" }} />
+        <MarkdowPreview
+          source={code}
+          style={{ height: "calc(100vh - 40px)" }}
+        />
       </div>
     </div>
   );

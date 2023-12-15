@@ -11,7 +11,7 @@
 
   padding: 0 10px;
 
-  background-color: #222831;
+  background-color: #0D1117;
 }
 
 .controls--content>.control--change-name {
@@ -39,12 +39,12 @@
 
 .controls--content>.control--change-name>input:active {
   height: 39px;
-  border-bottom: 1px solid #FFD369;
+  border-bottom: 1px solid #58A6FF;
 }
 
 .controls--content>.control--change-name>input:focus {
   height: 39px;
-  border-bottom: 1px solid #FFD369;
+  border-bottom: 1px solid #58A6FF;
 }
 
 .controls--content>.actions {
@@ -53,26 +53,17 @@
   gap: 5px;
 }
 
-.controls--content>.actions>.control--button {
-  width: 40px;
+.controls--content>.controls--author {
   height: 40px;
-
-  cursor: pointer;
-  outline: none;
-  border: none;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  color: #EEEEEE;
-  background-color: #222831;
 }
 
-.controls--content>.actions>.control--button:hover {
-  color: #FFD369;
+.controls--content>.controls--author>p {
+  font-size: 14px;
 }
 
-.icon--green {
-  color: #008080 !important;
+.controls--content>.controls--author>p>a {
+  color: #58A6FF;
 }

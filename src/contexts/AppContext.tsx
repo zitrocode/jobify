@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import { OnChange } from "@monaco-editor/react";
+import { useNotes } from "../hooks/useNotes";
+import { NoteStructure } from "../types/NoteStructure";
 
 interface IAppContext {
   file: {
@@ -8,6 +10,12 @@ interface IAppContext {
   };
   code: string;
   updateCode: OnChange;
+  notes: {
+    notes: NoteStructure[];
+    current: number;
+    add: (note: NoteStructure) => void;
+    change: (id: number) => void;
+  };
   edit: {
     toggle: () => void;
     isEdit: boolean;
@@ -20,24 +28,15 @@ type IAppProvider = {
   children: React.ReactNode;
 };
 export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
-  const [fileName, setFilename] = useState<string>("default");
-  const [code, setCode] = useState<string>("");
+  const { code, notes, currentIdNote, handleChangeNote, handleAddNote } =
+    useNotes();
   const [isEdit, setIsEdit] = useState<boolean>(true);
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleChangeCode: OnChange = (currentCode, _) => {
-    if (currentCode) {
-      setCode(currentCode);
-      return;
-    }
-
-    setCode("");
-  };
-
+  const [filename, setFilename] = useState<string>("default");
   const handleChangeFilename = (
     ev: React.ChangeEvent<HTMLInputElement>
   ): void => {
@@ -48,11 +47,17 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
     <AppContext.Provider
       value={{
         file: {
-          name: fileName,
+          name: filename,
           change: handleChangeFilename,
         },
-        code,
-        updateCode: handleChangeCode,
+        notes: {
+          notes,
+          current: currentIdNote,
+          add: handleAddNote,
+          change: handleChangeNote,
+        },
+        code: code.value || "",
+        updateCode: code.change,
         edit: { toggle: toggleEdit, isEdit },
       }}
     >
