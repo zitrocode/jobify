@@ -2,9 +2,27 @@ import { useEffect, useState } from "react";
 import { NoteStructure } from "../types/NoteStructure";
 import { useCode } from "./useCode";
 
-const defaultValue = [
-  { id: 0, name: "New note", code: "Hello world! :D", isFavorite: false },
-  { id: 1, name: "Devs", code: "Hello Dev's", isFavorite: false },
+const defaultValue: NoteStructure[] = [
+  {
+    id: 0,
+    name: "Note Hi",
+    code: "# Hello world! :D",
+    notebook_id: null,
+    date: new Date(),
+    update_date: new Date(),
+    isFavorite: false,
+    isDelete: false,
+  },
+  {
+    id: 1,
+    name: "Note Dev's",
+    code: "# Hello Dev's! :D",
+    notebook_id: null,
+    date: new Date(),
+    update_date: new Date(),
+    isFavorite: false,
+    isDelete: false,
+  },
 ];
 
 export const useNotes = () => {
@@ -39,8 +57,6 @@ export const useNotes = () => {
     if (currentNote) {
       code.set(currentNote.code);
     }
-
-    console.log(currentNote);
   }, [currentIdNote]);
 
   return { code, notes, currentIdNote, handleChangeNote, handleAddNote };

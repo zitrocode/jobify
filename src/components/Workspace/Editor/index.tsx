@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Editor as MoEditor } from "@monaco-editor/react";
 
-import AppContext from "../../contexts/AppContext";
+import AppContext from "../../../contexts/AppContext";
 import "./editor.style.css";
 
 const Editor: React.FC = () => {
@@ -10,7 +10,8 @@ const Editor: React.FC = () => {
   return (
     <div className="editor">
       <MoEditor
-        height="100%"
+        width="calc(100vw - 620px)"
+        height="calc(100vh - 42px)"
         defaultLanguage="markdown"
         defaultValue=""
         value={code}

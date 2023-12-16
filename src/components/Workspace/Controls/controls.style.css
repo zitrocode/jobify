@@ -1,0 +1,37 @@
+.controls--content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border-top: 2px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.controls--content>.control--change-name {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls--content>.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.controls--content>.controls--author {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls--content>.controls--author>p {
+  color: var(--color-active-fg-alt);
+  font-size: 14px;
+}
+
+.controls--content>.controls--author>p>a {
+  color: #58A6FF;
+}

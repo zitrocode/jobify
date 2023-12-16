@@ -1,0 +1,20 @@
+.button-new-note {
+  padding: 6px 25px;
+
+
+  cursor: pointer;
+  color: #FFFFFF;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  background-color: #2D2D2D;
+}
+
+.button-new-note:hover {
+  color: #333333;
+  background-color: #FFD580;
+}

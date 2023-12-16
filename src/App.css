@@ -1,24 +1,27 @@
-/**
-* Colors
-  - BG: #222831
-  - BG_ALT: #393E46
-  - Text: #EEEEEE
-  - Other: #FFD369
-*/
-
 :root {
   font-family: 'Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0D1117;
+  --color-fg: #FFFFFF;
+  --color-bg: #1E1E1E;
+  --color-bg-alt: #2D2D2D;
+  --color-border: #292929;
+
+  --color-muted: rgba(255, 255, 255, .5);
+
+  --color-active-fg: #333333;
+  --color-active-fg-alt: rbga(51, 51, 51, .7);
+  --color-active-bg: #FFD580;
 }
 
 html,
 body {
   width: 100%;
   height: 100vh;
+
+  color: var(--color-fg);
+  background-color: var(--color-bg);
 }
 
 * {

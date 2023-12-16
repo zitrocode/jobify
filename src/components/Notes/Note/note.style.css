@@ -1,0 +1,30 @@
+.note--item {
+  width: 100%;
+  padding: 18px 22px;
+  cursor: pointer;
+  background-color: var(--color-bg);
+}
+
+.note--item>.note--title {
+  color: var(--color-fg);
+}
+
+.note--item>.note--update {
+  color: var(--color-muted)
+}
+
+.note--item:hover,
+.note--active {
+  color: var(--color-active-fg);
+  background-color: var(--color-active-bg);
+}
+
+.note--item:hover>.note--title,
+.note--active>.note--title {
+  color: var(--color-active-fg);
+}
+
+.note--item:hover>.note--update,
+.note--active>.note--update {
+  color: var(--color-active-fg-alt);
+}

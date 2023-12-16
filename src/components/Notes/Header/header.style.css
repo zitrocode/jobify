@@ -1,0 +1,16 @@
+.notes--header {
+  width: 100%;
+  padding: 18px;
+
+  background-color: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.notes--header>.notes--header-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 22px;
+}

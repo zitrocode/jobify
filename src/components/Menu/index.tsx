@@ -1,7 +1,8 @@
 import { useState } from "react";
 import MenuButtom from "./Button";
 import menuItems from "./menus";
-import NewButton from "../NewNote";
+
+import "./menu.style.css";
 
 const Menu: React.FC = () => {
   const [currentTool, setCurrentTool] = useState<string>("Notes");
@@ -15,13 +16,13 @@ const Menu: React.FC = () => {
   return (
     <div className="menu--notes">
       <h1 className="menu--title">Notes App</h1>
-      <NewButton />
       {menuItems.map((menu, index) => {
         return (
           <MenuButtom
             key={index}
             active={currentTool == menu.name}
             name={menu.name}
+            total={10}
             icon={<menu.Icon />}
             onClick={() => handleChangeTool(menu.name)}
           />

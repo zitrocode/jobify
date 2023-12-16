@@ -2,9 +2,9 @@ import { useContext } from "react";
 
 import Menu from "./components/Menu";
 import Layout from "./components/Layout";
-import Editor from "./components/Editor";
-import Preview from "./components/Previews";
-import Control from "./components/Controls";
+import WorkSpace from "./components/Workspace/indext";
+import Editor from "./components/Workspace/Editor";
+import Preview from "./components/Workspace/Previews";
 import NotesSection from "./components/Notes";
 
 import AppContext from "./contexts/AppContext";
@@ -17,9 +17,10 @@ const App = () => {
     <Layout>
       <Menu />
       <NotesSection />
-      {edit.isEdit && <Editor />}
-      {!edit.isEdit && <Preview />}
-      <Control />
+      <WorkSpace>
+        {edit.isEdit && <Editor />}
+        {!edit.isEdit && <Preview />}
+      </WorkSpace>
     </Layout>
   );
 };

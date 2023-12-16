@@ -1,11 +1,18 @@
 type IMenuButton = {
   name: string;
   active: boolean;
+  total: number;
   icon: React.ReactNode;
   onClick: () => void;
 };
 
-const MenuButtom: React.FC<IMenuButton> = ({ name, icon, active, onClick }) => {
+const MenuButtom: React.FC<IMenuButton> = ({
+  name,
+  icon,
+  active,
+  total,
+  onClick,
+}) => {
   const handleOnClick = () => {
     onClick();
     // Here code
@@ -16,8 +23,12 @@ const MenuButtom: React.FC<IMenuButton> = ({ name, icon, active, onClick }) => {
       className={`menu--button ${active && "menu--active"}`}
       onClick={handleOnClick}
     >
-      {icon}
-      {name}
+      <div className="menu--button-content">
+        {icon}
+        {name}
+      </div>
+
+      <span className="menu--button-total">{total}</span>
     </button>
   );
 };

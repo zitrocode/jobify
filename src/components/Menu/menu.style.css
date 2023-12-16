@@ -1,0 +1,61 @@
+.menu--notes {
+  min-width: 225px;
+  height: 100vh;
+
+  border-right: 2px solid #292929;
+  background-color: #1E1E1E;
+}
+
+.menu--notes>.menu--title {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 22px;
+  border-bottom: 2px solid #292929;
+}
+
+.menu--notes>.menu--button {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  padding: 20px 15px;
+  color: #E5E1E2;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.15s ease-in-outs;
+
+  outline: none;
+  border: none;
+  background-color: #1E1E1E;
+
+}
+
+.menu--notes>.menu--button>.menu--button-content {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu--button>.menu--button-total {
+  color: rgba(255, 255, 255, .5);
+  font-weight: 800;
+}
+
+.menu--notes>.menu--button:hover,
+.menu--notes>.menu--active {
+  color: #333333;
+  background-color: #FFD580;
+}
+
+.menu--notes>.menu--button:hover .menu--button-total,
+.menu--notes>.menu--active>.menu--button-total {
+  color: rgba(51, 51, 51, .5)
+}

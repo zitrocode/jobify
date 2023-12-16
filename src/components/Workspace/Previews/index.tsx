@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import MarkdowPreview from "@uiw/react-markdown-preview";
 
-import AppContext from "../../contexts/AppContext";
+import AppContext from "../../../contexts/AppContext";
 import "./preview.style.css";
 
 const Preview: React.FC = () => {
@@ -10,10 +10,7 @@ const Preview: React.FC = () => {
   return (
     <div className="preview">
       <div className="content">
-        <MarkdowPreview
-          source={code}
-          style={{ height: "calc(100vh - 40px)" }}
-        />
+        <MarkdowPreview source={code} />
       </div>
     </div>
   );

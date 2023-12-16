@@ -1,18 +1,22 @@
 import { useContext } from "react";
 import "./button.style.css";
 
-import { PlusSquare } from "iconoir-react";
-import AppContext from "../../contexts/AppContext";
-import { NoteStructure } from "../../types/NoteStructure";
+import { Plus } from "iconoir-react";
+import AppContext from "../../../../contexts/AppContext";
+import { NoteStructure } from "../../../../types/NoteStructure";
 
-const NewButton: React.FC = () => {
+const NewNote: React.FC = () => {
   const { notes } = useContext(AppContext);
 
   const newNote: NoteStructure = {
     id: notes.notes.length,
     name: "New note",
     code: "",
+    notebook_id: null,
+    date: new Date(),
+    update_date: new Date(),
     isFavorite: false,
+    isDelete: false,
   };
 
   const createNewNote = () => {
@@ -21,10 +25,9 @@ const NewButton: React.FC = () => {
 
   return (
     <button className="button-new-note" onClick={createNewNote}>
-      <PlusSquare />
-      New Note
+      <Plus />
     </button>
   );
 };
 
-export default NewButton;
+export default NewNote;

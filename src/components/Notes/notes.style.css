@@ -1,49 +1,7 @@
 .notes--content {
-  width: 320px;
-  height: 100%;
-  background-color: #161B22;
-}
+  min-width: 325px;
+  height: 100vh;
 
-.notes--content>.notes--search {
-  width: 100%;
-  padding: 10px;
-}
-
-.notes--content>.notes--search>input {
-  width: 100%;
-  font-size: 14px;
-  padding: 10px;
-
-  outline: none;
-  border: 2px solid #0D1117;
-  border-radius: 5px;
-}
-
-.notes--content>.notes--search>input:focus {
-  border: 2px solid #58A6FF;
-}
-
-.notes--content>.notes--items {
-  width: 100%;
-}
-
-.notes--content>.notes--items>.note--item {
-  width: 100%;
-  min-height: 50px;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.notes--content>.notes--items>.note--item:hover {
-  color: #58A6FF;
-  background-color: #0D1117;
-}
-
-.notes--content>.notes--items>.note--active {
-  color: #58A6FF;
-  background-color: #0D1117;
+  border-right: 2px solid var(--color-border);
+  background-color: var(--color-bg);
 }

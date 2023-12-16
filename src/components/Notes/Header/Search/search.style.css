@@ -1,0 +1,19 @@
+.notes--search-content {
+  width: 100%;
+}
+
+.notes--search-content>input {
+  width: 100%;
+  padding: 7px;
+  text-align: center;
+
+  font-size: 18px;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid #2D2D2D;
+  background-color: #2D2D2D;
+}
+
+.notes--search-content>input:focus {
+  border: 1px solid #FFD580;
+}

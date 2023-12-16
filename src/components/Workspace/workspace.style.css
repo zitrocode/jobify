@@ -1,0 +1,5 @@
+.workspace--content {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: var(--color-bg);
+}

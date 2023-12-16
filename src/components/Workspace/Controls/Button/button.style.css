@@ -10,12 +10,12 @@
   justify-content: center;
   align-items: center;
 
-  color: #EEEEEE;
-  background-color: #0D1117;
+  color: var(--color-active-fg-alt);
+  background-color: var(--color-bg);
 }
 
 .control--button:hover {
-  color: #58A6FF;
+  color: var(--color-active-bg);
 }
 
 .icon--green {
