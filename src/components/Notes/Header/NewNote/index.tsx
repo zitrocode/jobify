@@ -3,24 +3,13 @@ import "./button.style.css";
 
 import { Plus } from "iconoir-react";
 import AppContext from "../../../../contexts/AppContext";
-import { NoteStructure } from "../../../../types/NoteStructure";
 
 const NewNote: React.FC = () => {
-  const { notes } = useContext(AppContext);
+  const { notes, notebooks } = useContext(AppContext);
 
-  const newNote: NoteStructure = {
-    id: notes.notes.length,
-    name: "New note",
-    code: "",
-    notebook_id: null,
-    date: new Date(),
-    update_date: new Date(),
-    isFavorite: false,
-    isDelete: false,
-  };
-
+  const name = "Hi";
   const createNewNote = () => {
-    notes.add(newNote);
+    notes.add(name, notebooks.current.id);
   };
 
   return (

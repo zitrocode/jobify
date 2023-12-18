@@ -1,0 +1,26 @@
+.notebook--list {
+  width: 100%;
+}
+
+.notebook--list>.notebook--item {
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  font-size: 14px;
+
+  cursor: pointer;
+  color: var(--color-fg);
+
+  outline: none;
+  border: none;
+  padding: 10px 10px 10px 45px;
+  background-color: var(--color-bg);
+}
+
+.notebook--list>.notebook--item:hover,
+.notebook--list>.notebook--active {
+  font-weight: 600;
+  color: var(--color-active-fg);
+  background-color: var(--color-active-bg);
+}

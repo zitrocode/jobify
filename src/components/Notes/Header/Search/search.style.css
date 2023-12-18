@@ -1,19 +1,39 @@
 .notes--search-content {
+  position: relative;
   width: 100%;
 }
 
-.notes--search-content>input {
+.notes--search-content input {
   width: 100%;
-  padding: 7px;
-  text-align: center;
+  padding: 7px 7px 7px 36px;
 
   font-size: 18px;
   outline: none;
   border-radius: 8px;
-  border: 1px solid #2D2D2D;
-  background-color: #2D2D2D;
+
+  transition: all 0.3s ease-in-out;
+
+  color: var(--color-fg);
+  border: 1px solid var(--color-bg-alt);
+  background-color: var(--color-bg-alt);
 }
 
-.notes--search-content>input:focus {
-  border: 1px solid #FFD580;
+.notes--search-content input:focus {
+  border: 1px solid var(--color-active-bg);
+}
+
+.notes--search-content .notes--search-icon {
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+
+  font-size: 14px;
+  color: #757575;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

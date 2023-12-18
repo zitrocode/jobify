@@ -1,5 +1,5 @@
 export type NoteStructure = {
-  id: number;
+  id: string;
   name: string;
   code: string;
 

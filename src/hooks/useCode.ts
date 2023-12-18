@@ -15,10 +15,8 @@ export const useCode = () => {
   };
 
   return {
-    code: {
-      value: code,
-      set: setCode,
-      change: handleChangeCode,
-    },
+    value: code,
+    set: setCode,
+    change: handleChangeCode,
   };
 };

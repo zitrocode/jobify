@@ -17,13 +17,15 @@
 .menu--notes>.menu--button {
   width: 100%;
 
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 
+  text-transform: capitalize;
   padding: 20px 15px;
-  color: #E5E1E2;
+  color: var(--color-fg);
   text-align: left;
   font-weight: 600;
   cursor: pointer;
@@ -32,7 +34,7 @@
 
   outline: none;
   border: none;
-  background-color: #1E1E1E;
+  background-color: var(--color-bg);
 
 }
 
@@ -51,11 +53,36 @@
 
 .menu--notes>.menu--button:hover,
 .menu--notes>.menu--active {
-  color: #333333;
-  background-color: #FFD580;
+  color: var(--color-active-fg);
+  background-color: var(--color-active-bg);
 }
 
 .menu--notes>.menu--button:hover .menu--button-total,
 .menu--notes>.menu--active>.menu--button-total {
-  color: rgba(51, 51, 51, .5)
+  color: var(--color-active-fg-alt)
+}
+
+.menu--notes>.menu--button .menuItem--add-button {
+  color: rgba(255, 255, 255, .5);
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid transparent;
+  border-radius: 100%;
+  background-color: transparent;
+}
+
+.menu--notes>.menu--button .menuItem--add-button:hover {
+  border-color: var(--color-active-fg-alt);
+}
+
+.menu--notes>.menu--button:hover .menuItem--add-button,
+.menu--notes>.menu--active .menuItem--add-button {
+  color: var(--color-active-fg-alt);
 }

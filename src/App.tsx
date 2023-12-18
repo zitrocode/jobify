@@ -11,15 +11,15 @@ import AppContext from "./contexts/AppContext";
 import "./App.css";
 
 const App = () => {
-  const { edit } = useContext(AppContext);
+  const { editor } = useContext(AppContext);
 
   return (
     <Layout>
       <Menu />
       <NotesSection />
       <WorkSpace>
-        {edit.isEdit && <Editor />}
-        {!edit.isEdit && <Preview />}
+        {editor.isActive && <Editor />}
+        {!editor.isActive && <Preview />}
       </WorkSpace>
     </Layout>
   );

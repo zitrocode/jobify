@@ -1,63 +1,87 @@
-import { useEffect, useState } from "react";
-import { NoteStructure } from "../types/NoteStructure";
-import { useCode } from "./useCode";
+import { useState } from "react";
+import * as uuid from "uuid";
 
-const defaultValue: NoteStructure[] = [
-  {
-    id: 0,
-    name: "Note Hi",
-    code: "# Hello world! :D",
-    notebook_id: null,
-    date: new Date(),
-    update_date: new Date(),
-    isFavorite: false,
-    isDelete: false,
-  },
-  {
-    id: 1,
-    name: "Note Dev's",
-    code: "# Hello Dev's! :D",
-    notebook_id: null,
-    date: new Date(),
-    update_date: new Date(),
-    isFavorite: false,
-    isDelete: false,
-  },
-];
+import { INotes } from "../types/Notes";
+import { NoteStructure } from "../types/Structure/NoteStructure";
+import localStorageServer from "../services/localStorage";
 
-export const useNotes = () => {
-  const [notes, setNotes] = useState<NoteStructure[]>(defaultValue);
-  const [currentIdNote, setCurrentIdNote] = useState<number>(0);
+export const useNotes = (): INotes => {
+  const defaultNotes: NoteStructure[] = JSON.parse(
+    localStorageServer.getItem("notes") || "[]"
+  );
 
-  const [oldCode, setOldCode] = useState<string>(notes[0].code);
-  const [prevIdNote, setPrevIdNote] = useState<number>(currentIdNote);
+  const [notes, setNotes] = useState<NoteStructure[]>(defaultNotes);
+  const [current, setCurrent] = useState<string | null>(notes[0]?.id);
 
-  const { code } = useCode();
+  const handleChageCurrent = (id: string | null) => {
+    if (notes.findIndex((note) => note.id === id) !== -1) {
+      setCurrent(id);
+      return;
+    }
 
-  const handleChangeNote = (id: number) => {
-    setOldCode(code.value || "");
+    setCurrent(null);
+  };
 
-    if (notes.findIndex((currentNote) => currentNote.id === id) !== -1) {
-      setPrevIdNote(currentIdNote);
-      setCurrentIdNote(id);
+  const add = (name: string, notebook: string | null): void => {
+    if (name) {
+      const currentDate = new Date();
+
+      const newNote: NoteStructure = {
+        id: uuid.v4(),
+        code: "",
+        name,
+        date: currentDate,
+        update_date: currentDate,
+        notebook_id: notebook ? notebook : null,
+        isFavorite: false,
+        isDelete: false,
+      };
+
+      const newNotes = [...notes, newNote];
+      setNotes(newNotes);
+
+      // Save note in `localStorage`
+      localStorageServer.setItem("notes", JSON.stringify(notes));
     }
   };
 
-  const handleAddNote = (note: NoteStructure) => {
-    setNotes([...notes, note]);
-  };
+  const update = (id: string, name: string, code: string) => {
+    const currentNote = notes.filter((note) => note.id === id);
+    if (currentNote.length === 1) {
+      currentNote[0].name = name;
+      currentNote[0].code = code;
+    }
 
-  useEffect(() => {
-    const newNotes = notes.map((note) =>
-      note.id === prevIdNote ? { ...note, code: oldCode || "" } : note
-    );
+    const newNotes = notes.map((note) => {
+      if (note.id === id) {
+        return currentNote[0];
+      }
+
+      return note;
+    });
+
     setNotes(newNotes);
 
-    const currentNote = notes.find((note) => note.id === currentIdNote);
-    if (currentNote) {
-      code.set(currentNote.code);
-    }
-  }, [currentIdNote]);
+    // Save note in `localStorage`
+    localStorageServer.setItem("notes", JSON.stringify(notes));
+  };
 
-  return { code, notes, currentIdNote, handleChangeNote, handleAddNote };
+  const remove = (id: string) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+
+    // Save note in `localStorage`
+    localStorageServer.setItem("notes", JSON.stringify(notes));
+  };
+
+  return {
+    current: {
+      id: current,
+      change: handleChageCurrent,
+    },
+    get: notes,
+    add,
+    update,
+    remove,
+  };
 };

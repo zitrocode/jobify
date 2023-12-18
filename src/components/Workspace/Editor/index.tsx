@@ -5,7 +5,7 @@ import AppContext from "../../../contexts/AppContext";
 import "./editor.style.css";
 
 const Editor: React.FC = () => {
-  const { code, updateCode } = useContext(AppContext);
+  const { editor } = useContext(AppContext);
 
   return (
     <div className="editor">
@@ -14,10 +14,10 @@ const Editor: React.FC = () => {
         height="calc(100vh - 42px)"
         defaultLanguage="markdown"
         defaultValue=""
-        value={code}
+        value={editor.code.value}
         theme="vs-dark"
         options={{ minimap: { enabled: false } }}
-        onChange={updateCode}
+        onChange={editor.code.change}
       />
     </div>
   );

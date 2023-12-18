@@ -1,9 +1,10 @@
-import { Notes, Star, Trash } from "iconoir-react";
+import { Notes, Star, Trash, Book } from "iconoir-react";
 
 const menuItems = [
-  { name: "Notes", Icon: Notes },
-  { name: "Favorites", Icon: Star },
-  { name: "Trash", Icon: Trash },
+  { name: "notes", Icon: Notes },
+  { name: "notebook", Icon: Book },
+  { name: "favorites", Icon: Star },
+  { name: "trash", Icon: Trash },
 ];
 
 export default menuItems;
