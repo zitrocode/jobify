@@ -1,12 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { XmarkCircleSolid } from "iconoir-react";
+import AppContext from "../../../contexts/AppContext";
 
 interface INotebookItem {
+  id: string;
   name: string;
   active: boolean;
   onAction: () => void;
 }
 
-const NotebookItem: React.FC<INotebookItem> = ({ name, active, onAction }) => {
+const NotebookItem: React.FC<INotebookItem> = ({
+  id,
+  name,
+  active,
+  onAction,
+}) => {
+  const { notebooks } = useContext(AppContext);
   const [isEditing, setIsEditing] = useState(false);
   const [notebookValue, setNotebookValue] = useState<string>(name);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -24,6 +33,7 @@ const NotebookItem: React.FC<INotebookItem> = ({ name, active, onAction }) => {
   const handleBlur = () => {
     setIsEditing(false);
     // Here function for save title
+    notebooks.update(id, notebookValue);
   };
 
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +44,8 @@ const NotebookItem: React.FC<INotebookItem> = ({ name, active, onAction }) => {
     if (ev.key === "Enter") {
       setIsEditing(false);
       // Here function for save title
+
+      notebooks.update(id, notebookValue);
     }
   };
   return (
@@ -54,6 +66,13 @@ const NotebookItem: React.FC<INotebookItem> = ({ name, active, onAction }) => {
           onClick={onAction}
         >
           {notebookValue}
+
+          <button
+            className="notebook--delete"
+            onClick={() => notebooks.remove(id)}
+          >
+            {<XmarkCircleSolid />}
+          </button>
         </div>
       )}
     </>

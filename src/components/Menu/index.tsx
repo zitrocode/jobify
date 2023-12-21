@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import MenuButton from "./MenuButton";
 import menuItems from "./menus";
 
@@ -11,8 +11,7 @@ interface MenuTotals {
 }
 
 const Menu: React.FC = () => {
-  const [currentTool, setCurrentTool] = useState<string>("notes");
-  const { notes, notebooks } = useContext(AppContext);
+  const { notes, notebooks, tool } = useContext(AppContext);
 
   const menuTotals: MenuTotals = {
     notes: notes.get.filter((note) => !note.isDelete).length,
@@ -23,17 +22,17 @@ const Menu: React.FC = () => {
 
   const handleChangeTool = (newTool: string): void => {
     if (menuItems.findIndex((tool) => newTool == tool.name) !== -1) {
-      setCurrentTool(newTool);
+      tool.change(newTool);
     }
   };
 
   useEffect(() => {
-    if (currentTool === "notes") {
+    if (tool.current === "notes") {
       if (notebooks.current.id !== null) {
         notebooks.current.change(null);
       }
     }
-  }, [currentTool]);
+  }, [tool.current]);
 
   return (
     <div className="menu--notes">
@@ -42,13 +41,13 @@ const Menu: React.FC = () => {
         return (
           <MenuButton
             key={index}
-            active={currentTool == menu.name}
+            active={tool.current == menu.name}
             name={menu.name}
             total={menu.name ? menuTotals[menu.name] : null}
             icon={<menu.Icon />}
             rightIcon={
-              menu.name === "notebook" ? (
-                <AddButton onAction={() => console.log("click")} />
+              menu.name === "notebooks" ? (
+                <AddButton onAction={() => notebooks.add("new notebook")} />
               ) : (
                 ""
               )

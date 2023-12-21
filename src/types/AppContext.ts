@@ -8,6 +8,10 @@ export interface IAppContext {
   notes: INotes;
   notebooks: INotebooks;
   search: ISearch;
+  tool: {
+    current: string;
+    change: (newTool: string) => void;
+  };
 }
 
 export type IAppProvider = {

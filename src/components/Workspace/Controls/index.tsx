@@ -4,10 +4,10 @@ import {
   Eye,
   Download,
   CheckCircleSolid,
-  ViewColumns2,
   PasteClipboard,
-  SunLight,
   Settings,
+  Star,
+  Trash,
 } from "iconoir-react";
 
 import AppContext from "../../../contexts/AppContext";
@@ -45,6 +45,30 @@ const Controls: React.FC = () => {
     }
   };
 
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(editor.code.value);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
+  const handleDeleteNote = () => {
+    const findNote = notes.get.find((note) => note.id === notes.current.id);
+    if (findNote) {
+      notes.update(notes.current.id || "", { isDelete: !findNote.isDelete });
+    }
+  };
+
+  const handleFavoriteNote = () => {
+    const findNote = notes.get.find((note) => note.id === notes.current.id);
+    if (findNote) {
+      notes.update(notes.current.id || "", {
+        isFavorite: !findNote.isFavorite,
+      });
+    }
+  };
+
   return (
     <div className="controls--content">
       <div className="actions">
@@ -52,17 +76,14 @@ const Controls: React.FC = () => {
           icon={editor.isActive ? <Edit /> : <Eye />}
           onChange={editor.toggle}
         />
-
+        <Button icon={<Star />} onChange={handleFavoriteNote} />
+        <Button icon={<Trash />} onChange={handleDeleteNote} />
         <Button
-          icon={<ViewColumns2 />}
+          icon={isLoadingCreating ? <CheckCircleSolid /> : <Download />}
           active={isLoadingCreating}
           onChange={handleDownloadFile}
         />
-        <Button
-          icon={<PasteClipboard />}
-          active={isLoadingCreating}
-          onChange={handleDownloadFile}
-        />
+        <Button icon={<PasteClipboard />} onChange={copyContent} />
       </div>
       <div className="controls--author">
         <p>
@@ -72,14 +93,6 @@ const Controls: React.FC = () => {
       </div>
 
       <div className="actions">
-        <p className="update-date">Date file...</p>
-        <Button
-          icon={isLoadingCreating ? <CheckCircleSolid /> : <Download />}
-          active={isLoadingCreating}
-          onChange={handleDownloadFile}
-        />
-
-        <Button icon={<SunLight />} onChange={() => {}} />
         <Button icon={<Settings />} onChange={() => {}} />
       </div>
     </div>

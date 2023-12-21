@@ -6,6 +6,7 @@ import { useNotebooks } from "../hooks/useNotebooks";
 import { useCode } from "../hooks/useCode";
 import { useEdit } from "../hooks/useEdit";
 import { useSearchNote } from "../hooks/useSearch";
+import { useCurrentTools } from "../hooks/useCurrentTool";
 
 const AppContext = createContext<IAppContext>({} as IAppContext);
 
@@ -15,16 +16,30 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
   const notes = useNotes();
   const search = useSearchNote();
   const notebooks = useNotebooks();
+  const tools = useCurrentTools();
 
   useEffect(() => {
     const findNote = notes.get.findIndex(
       (note) => note.id === notes.current.id
     );
     if (findNote !== -1) {
-      const name = notes.get[findNote].name;
       const oldCode = notes.get[findNote].code;
-      if (notes.current.id)
-        notes.update(notes.current.id, name, code.value || oldCode);
+      const oldName = notes.get[findNote].name;
+      let name: string;
+
+      if (code.value) {
+        name = code.value.split("\n")[0].replace("#", "").replace("# ", "");
+        name = name.length <= 30 ? name : name.slice(0, 30);
+      } else {
+        name = "New note";
+      }
+
+      if (notes.current.id) {
+        notes.update(notes.current.id, {
+          code: code.value || oldCode,
+          name: name || oldName,
+        });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code.value]);
@@ -71,6 +86,10 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
         search: {
           value: search.search || "",
           change: search.handleSearchNote,
+        },
+        tool: {
+          current: tools.current,
+          change: tools.change,
         },
       }}
     >

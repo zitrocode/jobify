@@ -12,6 +12,7 @@ const NotebookList: React.FC = () => {
         return (
           <NotebookItem
             key={index}
+            id={notebook.id}
             name={notebook.name}
             active={notebook.id === notebooks.current.id}
             onAction={() => notebooks.current.change(notebook.id)}

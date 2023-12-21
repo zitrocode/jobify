@@ -3,11 +3,14 @@ import * as uuid from "uuid";
 
 import { NotebookStrucure } from "../types/Structure/NotebookStructure";
 import { INotebooks } from "../types/Notebooks";
+
 import localStorageServer from "../services/localStorage";
+
+const notebooksData: NotebookStrucure[] = [{ id: "dsfadsfa", name: "Godot" }];
 
 export const useNotebooks = (): INotebooks => {
   const defaultNotes: NotebookStrucure[] = JSON.parse(
-    localStorageServer.getItem("notebooks") || "[]"
+    localStorageServer.getItem("notebooks") || JSON.stringify(notebooksData)
   );
 
   const [notebooks, setNotebooks] = useState<NotebookStrucure[]>(defaultNotes);

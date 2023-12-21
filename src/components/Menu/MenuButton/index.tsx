@@ -19,7 +19,6 @@ const MenuButton: React.FC<IMenuButton> = ({
 }) => {
   const handleOnClick = () => {
     onClick();
-    // Here code
   };
 
   return (
@@ -39,7 +38,7 @@ const MenuButton: React.FC<IMenuButton> = ({
           <span className="menu--button-total">{total}</span>
         )}
       </div>
-      {name === "notebook" && active && <NotebookList />}
+      {name === "notebooks" && active && <NotebookList />}
     </>
   );
 };

@@ -6,6 +6,8 @@ import { NoteStructure } from "../types/Structure/NoteStructure";
 import localStorageServer from "../services/localStorage";
 
 export const useNotes = (): INotes => {
+  // localStorageServer.removeItem("notes");
+
   const defaultNotes: NoteStructure[] = JSON.parse(
     localStorageServer.getItem("notes") || "[]"
   );
@@ -45,11 +47,23 @@ export const useNotes = (): INotes => {
     }
   };
 
-  const update = (id: string, name: string, code: string) => {
+  const update = (
+    id: string,
+    options: {
+      name?: string;
+      code?: string;
+      isDelete?: boolean;
+      isFavorite?: boolean;
+    }
+  ) => {
     const currentNote = notes.filter((note) => note.id === id);
     if (currentNote.length === 1) {
-      currentNote[0].name = name;
-      currentNote[0].code = code;
+      currentNote[0].name = options.name || currentNote[0].name;
+      currentNote[0].code = options.code || currentNote[0].code;
+      currentNote[0].isDelete = options.isDelete || currentNote[0].isDelete;
+      currentNote[0].isFavorite =
+        options.isFavorite || currentNote[0].isFavorite;
+      currentNote[0].update_date = new Date();
     }
 
     const newNotes = notes.map((note) => {

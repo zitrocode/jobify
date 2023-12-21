@@ -6,10 +6,8 @@ import AppContext from "../../../../contexts/AppContext";
 
 const NewNote: React.FC = () => {
   const { notes, notebooks } = useContext(AppContext);
-
-  const name = "Hi";
   const createNewNote = () => {
-    notes.add(name, notebooks.current.id);
+    notes.add("New note", notebooks.current.id);
   };
 
   return (
