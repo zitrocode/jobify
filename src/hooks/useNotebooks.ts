@@ -6,11 +6,11 @@ import { INotebooks } from "../types/Notebooks";
 
 import localStorageServer from "../services/localStorage";
 
-const notebooksData: NotebookStrucure[] = [{ id: "dsfadsfa", name: "Godot" }];
+const notebooksData: NotebookStrucure[] = [];
 
 export const useNotebooks = (): INotebooks => {
   const defaultNotes: NotebookStrucure[] = JSON.parse(
-    localStorageServer.getItem("notebooks") || JSON.stringify(notebooksData)
+    localStorageServer.getItem("notebooks") ?? JSON.stringify(notebooksData)
   );
 
   const [notebooks, setNotebooks] = useState<NotebookStrucure[]>(defaultNotes);

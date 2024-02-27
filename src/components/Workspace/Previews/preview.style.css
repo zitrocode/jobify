@@ -1,4 +1,5 @@
 .preview {
+  width: 100%;
   max-height: calc(100vh - 50px);
   padding: 25px;
   overflow-y: scroll;

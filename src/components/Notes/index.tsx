@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Note from "./Note";
 
 import AppContext from "../../contexts/AppContext";
@@ -11,32 +11,27 @@ const NotesSection: React.FC = () => {
   const { notes, notebooks, search, tool } = useContext(AppContext);
   let newNotes: NoteStructure[];
 
-  newNotes = search.value
-    ? notes.get.filter((note) => note.name.toLowerCase().includes(search.value))
-    : notes.get;
+  if (search.value) {
+    newNotes = notes.get.filter((note) =>
+      note.name.toLowerCase().includes(search.value)
+    );
+  } else {
+    newNotes = notes.get;
+  }
 
   if (tool.current === "notes") {
-    newNotes = notes.get.filter((note) => note.isDelete === false);
-  }
-
-  if (tool.current === "trash") {
-    newNotes = notes.get.filter((note) => note.isDelete === true);
-  }
-
-  if (tool.current === "favorites") {
-    newNotes = notes.get.filter(
-      (note) => note.isFavorite === true && note.isDelete === false
-    );
-  }
-
-  if (tool.current === "notebooks") {
+    newNotes = newNotes.filter((note) => !note.isDelete);
+  } else if (tool.current === "trash") {
+    newNotes = newNotes.filter((note) => note.isDelete);
+  } else if (tool.current === "favorites") {
+    newNotes = newNotes.filter((note) => note.isFavorite && !note.isDelete);
+  } else if (tool.current === "notebooks") {
     if (notebooks.current.id) {
-      newNotes = notes.get.filter(
-        (note) =>
-          note.notebook_id === notebooks.current.id && note.isDelete === false
+      newNotes = newNotes.filter(
+        (note) => note.notebook_id === notebooks.current.id && !note.isDelete
       );
     } else {
-      newNotes = notes.get.filter((note) => note.notebook_id);
+      newNotes = newNotes.filter((note) => note.notebook_id && !note.isDelete);
     }
   }
 

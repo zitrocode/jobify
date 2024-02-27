@@ -10,7 +10,7 @@ const Button: React.FC<IButton> = ({ icon, onChange, active }) => {
   return (
     <button
       onClick={onChange}
-      className={`control--button ${active ? "icon--green" : ""}`}
+      className={`control--button ${active ? "icon--active" : ""}`}
     >
       {icon}
     </button>

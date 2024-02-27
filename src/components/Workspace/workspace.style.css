@@ -1,4 +1,5 @@
 .workspace--content {
+  flex-grow: 1;
   display: grid;
   grid-template-rows: 1fr auto;
   background-color: var(--color-bg);

@@ -10,7 +10,7 @@ const Editor: React.FC = () => {
   return (
     <div className="editor">
       <MoEditor
-        width="calc(100vw - 620px)"
+        width="100%"
         height="calc(100vh - 42px)"
         defaultLanguage="markdown"
         defaultValue=""

@@ -7,7 +7,9 @@ import {
   PasteClipboard,
   Settings,
   Star,
+  StarSolid,
   Trash,
+  TrashSolid,
 } from "iconoir-react";
 
 import AppContext from "../../../contexts/AppContext";
@@ -19,6 +21,7 @@ import "./controls.style.css";
 const Controls: React.FC = () => {
   const { editor, notes } = useContext(AppContext);
   const [isLoadingCreating, setIsLoadingCreating] = useState<boolean>(false);
+  const currentNote = notes.get.find((note) => note.id === notes.current.id);
 
   const handleDownloadFile = () => {
     const findNote = notes.get.find((note) => note.id === notes.current.id);
@@ -54,17 +57,17 @@ const Controls: React.FC = () => {
   };
 
   const handleDeleteNote = () => {
-    const findNote = notes.get.find((note) => note.id === notes.current.id);
-    if (findNote) {
-      notes.update(notes.current.id || "", { isDelete: !findNote.isDelete });
+    if (currentNote) {
+      notes.update(currentNote.id, {
+        isDelete: !currentNote.isDelete,
+      });
     }
   };
 
   const handleFavoriteNote = () => {
-    const findNote = notes.get.find((note) => note.id === notes.current.id);
-    if (findNote) {
-      notes.update(notes.current.id || "", {
-        isFavorite: !findNote.isFavorite,
+    if (currentNote) {
+      notes.update(currentNote.id, {
+        isFavorite: !currentNote.isFavorite,
       });
     }
   };
@@ -76,8 +79,16 @@ const Controls: React.FC = () => {
           icon={editor.isActive ? <Edit /> : <Eye />}
           onChange={editor.toggle}
         />
-        <Button icon={<Star />} onChange={handleFavoriteNote} />
-        <Button icon={<Trash />} onChange={handleDeleteNote} />
+        <Button
+          icon={currentNote?.isFavorite ? <StarSolid /> : <Star />}
+          active={currentNote?.isFavorite}
+          onChange={handleFavoriteNote}
+        />
+        <Button
+          icon={currentNote?.isDelete ? <TrashSolid /> : <Trash />}
+          active={currentNote?.isDelete}
+          onChange={handleDeleteNote}
+        />
         <Button
           icon={isLoadingCreating ? <CheckCircleSolid /> : <Download />}
           active={isLoadingCreating}

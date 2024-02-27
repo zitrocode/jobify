@@ -1,7 +1,8 @@
 .notes--content {
-  min-width: 325px;
+  position: relative;
+  flex: 0 0 350px;
   height: 100vh;
-
+  resize: horizontal;
   border-right: 2px solid var(--color-border);
   background-color: var(--color-bg);
 }

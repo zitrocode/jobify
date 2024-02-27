@@ -1,3 +1,4 @@
+import Modal from "../Modal";
 import "./layout.style.css";
 
 type ILayout = {
@@ -5,7 +6,12 @@ type ILayout = {
 };
 
 const Layout: React.FC<ILayout> = ({ children }) => {
-  return <div className="wrapper">{children}</div>;
+  return (
+    <>
+      <div className="wrapper">{children}</div>
+      {/* <Modal onClose={() => {}} /> */}
+    </>
+  );
 };
 
 export default Layout;

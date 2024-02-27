@@ -18,6 +18,6 @@
   color: var(--color-active-bg);
 }
 
-.icon--green {
-  color: #008080 !important;
+.icon--active {
+  color: #FFD580 !important;
 }

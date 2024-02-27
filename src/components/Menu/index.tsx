@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
+
 import MenuButton from "./MenuButton";
 import menuItems from "./menus";
-
-import "./menu.style.css";
 import AppContext from "../../contexts/AppContext";
 import AddButton from "./AddButton";
+
+import "./menu.style.css";
 
 interface MenuTotals {
   [key: string]: number;

@@ -1,11 +1,4 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 250px 350px 1fr;
-  grid-template-rows: 1fr;
-}
-
-@media only screen and (min-width: 600px) {
-  .wrapper {
-    flex-direction: row;
-  }
+  display: flex;
+  overflow: hidden;
 }
