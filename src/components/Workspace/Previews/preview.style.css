@@ -1,6 +1,160 @@
 .preview {
-  padding: 10px;
-  background-color: #0D1117;
+  max-height: calc(100vh - 50px);
+  padding: 25px;
+  overflow-y: scroll;
+  background-color: #1E1E1E;
+
+  h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  h3,
+  h4 {
+    font-size: 1.25em;
+    line-height: 1.2em;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  h5,
+  h6 {
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #e0e0e0;
+    font-size: 1em;
+    line-height: normal;
+    margin: 16px 0px;
+  }
+
+  a {
+    color: #FFD580;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul,
+  ol {
+    padding: 16px 32px
+  }
+
+  blockquote {
+    border-left: 2px solid #FFFFFF;
+    padding: 4px 16px;
+    margin: 16px 0px;
+  }
+
+  span {
+    margin: 0;
+    padding: 0;
+  }
+
+  pre {
+    margin: 16px 0px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #282828;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 8px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #343434;
+      border-radius: 8px;
+    }
+
+    code {
+      background-color: #282828;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #5C6370;
+      /* Color para comentarios y citas */
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #D19A66;
+      /* Color para palabras clave y etiquetas */
+    }
+
+    .hljs-literal,
+    .hljs-number,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
+      color: #5BB498;
+      /* Color para literales, números y variables */
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #86B300;
+      /* Color para cadenas y etiquetas de documentación */
+    }
+
+    .hljs-title,
+    .hljs-section {
+      color: #E5C07B;
+      /* Color para títulos y secciones */
+    }
+
+    .hljs-selector-id,
+    .hljs-selector-class {
+      color: #E06C75;
+      /* Color para selectores de ID y de clase */
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+  }
+
+  code {
+    padding: 4px 6px;
+    border-radius: 4px;
+    background-color: #3f3f3f;
+  }
+
+  hr {
+    margin: 16px 0px;
+    border: 2px solid #383838;
+  }
 }
 
-.preview>.content {}
+.preview::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background-color: transparent;
+}
+
+.preview::-webkit-scrollbar-thumb {
+  background-color: #343434;
+  border-radius: 8px;
+}

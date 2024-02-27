@@ -36,7 +36,7 @@ const Menu: React.FC = () => {
 
   return (
     <div className="menu--notes">
-      <h1 className="menu--title">Notes App</h1>
+      <h1 className="menu--title">Jobify</h1>
       {menuItems.map((menu, index) => {
         return (
           <MenuButton
